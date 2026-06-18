@@ -1,6 +1,5 @@
 "use client";
 
-import { Share2 } from "lucide-react";
 import { GradientButton } from "@/components/ui/GradientButton";
 
 interface StageHeaderProps {
@@ -16,8 +15,8 @@ export function StageHeader({ title, subtitle, onShare }: StageHeaderProps) {
         <h1 className="text-xl font-medium leading-[30px] text-black">{title}</h1>
         <p className="text-sm text-muted-500">{subtitle}</p>
       </div>
-      <GradientButton onClick={onShare} className="px-3 py-2.5 text-md">
-        <Share2 className="size-4" aria-hidden />
+      <GradientButton onClick={onShare} className="px-8 py-2.5 text-md">
+       
         Share
       </GradientButton>
     </div>

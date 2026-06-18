@@ -4,9 +4,9 @@ import { useMemo, useState } from "react";
 import type { BackgroundId, SelectionState } from "@/types";
 import {
   characters,
-  getAvatar,
   getCharacter,
   getPose,
+  renderSrc,
 } from "@/data/characters";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { Stage } from "@/components/layout/Stage";
@@ -22,7 +22,7 @@ export default function Home() {
   const [selection, setSelection] = useState<SelectionState>({
     characterId: "leo",
     poseId: "stand",
-    avatarId: "oliver",
+    colorId: "oliver",
     backgroundId: "white",
     exportFormat: "png",
     zoom: 100,
@@ -33,14 +33,28 @@ export default function Home() {
     [selection.characterId],
   );
   const pose = getPose(character, selection.poseId);
-  const avatar = getAvatar(character, selection.avatarId);
+  const colorId = character.colors
+    ? character.colors.find((c) => c.id === selection.colorId)?.id ??
+      character.colors[0].id
+    : selection.colorId;
+  const render = renderSrc(character, colorId, pose.id);
 
   const update = (patch: Partial<SelectionState>) =>
     setSelection((prev) => ({ ...prev, ...patch }));
 
+  // Switching character resets pose + color to that character's defaults.
+  const handleSelectCharacter = (id: string) => {
+    const next = getCharacter(id);
+    update({
+      characterId: id,
+      poseId: next.poses[0].id,
+      colorId: next.colors?.[0].id ?? selection.colorId,
+    });
+  };
+
   const handleDownload = () => {
     const link = document.createElement("a");
-    link.href = pose.render;
+    link.href = render;
     link.download = `${character.id}-${pose.id}.png`;
     document.body.appendChild(link);
     link.click();
@@ -62,14 +76,14 @@ export default function Home() {
       <Sidebar
         characters={characters}
         activeCharacterId={selection.characterId}
-        onSelectCharacter={(id) => update({ characterId: id })}
+        onSelectCharacter={handleSelectCharacter}
       />
 
       <Stage
-        title={avatar.name}
-        subtitle={`${character.name} / ${pose.name}`}
-        render={pose.render}
-        alt={`${avatar.name} — ${pose.name} pose`}
+        title={character.name}
+        subtitle={pose.name}
+        render={render}
+        alt={`${character.name} — ${pose.name} pose`}
         backgroundId={selection.backgroundId}
         zoom={selection.zoom}
         onShare={handleShare}
@@ -80,8 +94,8 @@ export default function Home() {
 
       <InspectorPanel
         character={character}
-        selection={selection}
-        onSelectAvatar={(id) => update({ avatarId: id })}
+        selection={{ ...selection, colorId }}
+        onSelectColor={(id) => update({ colorId: id })}
         onSelectPose={(id) => update({ poseId: id })}
         onSelectBackground={(id: BackgroundId) => update({ backgroundId: id })}
         onSelectExport={(id) => update({ exportFormat: id })}

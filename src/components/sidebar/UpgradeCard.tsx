@@ -3,7 +3,7 @@ import Image from "next/image";
 export function UpgradeCard() {
   return (
     <div className="sidebar-footer-glow absolute inset-x-[-1px] bottom-[-1px] rounded-[24px] bg-white p-2">
-      <div className="flex items-center gap-2 rounded-[8px] p-2">
+      <div className="flex items-center gap-2 rounded-[4px] p-2">
         <Image
           src="/brand/upgrade.png"
           alt=""

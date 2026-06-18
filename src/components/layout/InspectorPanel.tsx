@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { FileCode, FileImage, ImageIcon } from "lucide-react";
 import type { BackgroundId, Character, SelectionState } from "@/types";
-import { backgrounds, exportFormats } from "@/data/characters";
+import { backgrounds, exportFormats, renderSrc } from "@/data/characters";
 import { cn } from "@/lib/cn";
 import { Divider } from "@/components/ui/Divider";
 import { InspectorSection } from "@/components/inspector/InspectorSection";
@@ -21,7 +21,7 @@ const exportIcons = {
 interface InspectorPanelProps {
   character: Character;
   selection: SelectionState;
-  onSelectAvatar: (id: string) => void;
+  onSelectColor: (id: string) => void;
   onSelectPose: (id: string) => void;
   onSelectBackground: (id: BackgroundId) => void;
   onSelectExport: (id: string) => void;
@@ -31,7 +31,7 @@ interface InspectorPanelProps {
 export function InspectorPanel({
   character,
   selection,
-  onSelectAvatar,
+  onSelectColor,
   onSelectPose,
   onSelectBackground,
   onSelectExport,
@@ -44,29 +44,30 @@ export function InspectorPanel({
         <span className="text-sm text-muted-400">Auto-saved</span>
       </div>
 
-      {/* Character */}
-      <InspectorSection title="Character">
-        <SwatchGrid>
-          {character.avatars.map((avatar) => (
-            <SwatchCard
-              key={avatar.id}
-              label={avatar.name}
-              selected={avatar.id === selection.avatarId}
-              onSelect={() => onSelectAvatar(avatar.id)}
-            >
-              <Image
-                src={avatar.avatar}
-                alt=""
-                width={42}
-                height={42}
-                className="size-[42px] rounded-full object-cover"
-              />
-            </SwatchCard>
-          ))}
-        </SwatchGrid>
-      </InspectorSection>
+      {/* Character — outfit colors (only for characters that have variants) */}
+      {character.colors && (
+        <>
+          <InspectorSection title="Character">
+            <SwatchGrid>
+              {character.colors.map((variant) => (
+                <SwatchCard
+                  key={variant.id}
+                  label={variant.name}
+                  selected={variant.id === selection.colorId}
+                  onSelect={() => onSelectColor(variant.id)}
+                >
+                  <div
+                    className="size-[42px] rounded-full"
+                    style={{ background: variant.color }}
+                  />
+                </SwatchCard>
+              ))}
+            </SwatchGrid>
+          </InspectorSection>
 
-      <Divider />
+          <Divider />
+        </>
+      )}
 
       {/* Poses */}
       <InspectorSection title="Poses">
@@ -80,7 +81,7 @@ export function InspectorPanel({
             >
               <div className="relative h-[78px] w-full overflow-hidden rounded-[8px] bg-surface-100">
                 <Image
-                  src={pose.thumbnail}
+                  src={renderSrc(character, selection.colorId, pose.id)}
                   alt=""
                   fill
                   sizes="109px"

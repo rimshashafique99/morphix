@@ -10,13 +10,14 @@ export interface ColorVariant {
 }
 
 export interface Character {
-  id: string; // "leo" — also the asset folder for characters without color variants
+  id: string; // "leo" — also the top-level asset folder for this character
   name: string; // sidebar + header label
   poses: Pose[];
   /**
-   * Outfit-color variants. Present only for characters that have multiple
-   * recolored renders (Leo). When set, the render folder is the selected
-   * color id; otherwise it falls back to the character id.
+   * Outfit-color swatches shown in the inspector "Character" section. Each
+   * variant maps to a recolored render folder at
+   * `public/characters/<id>/<colorId>/<poseId>.png`. List only the colors that
+   * actually have renders for this character (e.g. Noah ships oliver only).
    */
   colors?: ColorVariant[];
 }

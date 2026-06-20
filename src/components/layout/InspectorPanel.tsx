@@ -38,7 +38,7 @@ export function InspectorPanel({
   onDownload,
 }: InspectorPanelProps) {
   return (
-    <aside className="flex h-full w-[300px] shrink-0 flex-col gap-6 overflow-y-auto rounded-[16px] border border-line bg-white p-4">
+    <aside className="flex h-full w-[230px] shrink-0 flex-col gap-6 overflow-y-auto rounded-[16px] border border-line bg-white p-4 lg:w-[260px] xl:w-[300px]">
       <div className="flex items-center justify-between border-b border-line pb-4">
         <h2 className="text-md font-medium text-black">Inspector</h2>
         <span className="text-sm text-muted-400">Auto-saved</span>

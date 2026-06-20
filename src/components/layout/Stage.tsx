@@ -11,7 +11,10 @@ interface StageProps {
   alt: string;
   backgroundId: BackgroundId;
   zoom: number;
+  rotation: { x: number; y: number };
   onShare: () => void;
+  onRotate: (rotation: { x: number; y: number }) => void;
+  onWheelZoom: (deltaY: number) => void;
   onZoomIn: () => void;
   onZoomOut: () => void;
   onReset: () => void;
@@ -24,7 +27,10 @@ export function Stage({
   alt,
   backgroundId,
   zoom,
+  rotation,
   onShare,
+  onRotate,
+  onWheelZoom,
   onZoomIn,
   onZoomOut,
   onReset,
@@ -37,6 +43,9 @@ export function Stage({
         alt={alt}
         backgroundId={backgroundId}
         zoom={zoom}
+        rotation={rotation}
+        onRotate={onRotate}
+        onWheelZoom={onWheelZoom}
         onZoomIn={onZoomIn}
         onZoomOut={onZoomOut}
         onReset={onReset}

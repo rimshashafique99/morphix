@@ -26,10 +26,10 @@ export function ExportOption({
       aria-pressed={selected}
       className={cn(
         "flex w-full items-center justify-between rounded-[12px] border px-3 py-2 text-left",
-        "transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
+        "transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
         selected
-          ? "bg-brand-gradient-10 border-primary"
-          : "border-line-strong bg-surface-100 hover:border-primary/40",
+          ? "bg-brand-gradient-10 border-primary hover:shadow-sm"
+          : "border-line-strong bg-surface-100 hover:border-primary/40 hover:bg-white hover:shadow-sm",
       )}
     >
       <span className="flex items-center gap-3">

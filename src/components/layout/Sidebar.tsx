@@ -27,7 +27,7 @@ export function Sidebar({
   }, [characters, query]);
 
   return (
-    <aside className="relative flex h-full w-[300px] shrink-0 flex-col rounded-[24px] border border-line bg-white px-1">
+    <aside className="relative flex h-full w-[230px] shrink-0 flex-col rounded-[24px] border border-line bg-white px-1 lg:w-[260px] xl:w-[300px]">
       <div className="flex flex-col gap-2 p-2">
         <SidebarHeader />
         <SearchInput value={query} onChange={setQuery} />

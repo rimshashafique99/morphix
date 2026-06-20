@@ -1,21 +1,25 @@
 export interface Pose {
-  id: string;
-  name: string; // "Stand"
-  thumbnail: string; // small preview used in the inspector grid
-  render: string; // full-size render shown in the center viewer
+  id: string; // also the render filename, e.g. "party-dance"
+  name: string; // "Party Dance"
 }
 
-export interface AvatarVariant {
-  id: string;
-  name: string; // inspector "Character" swatch label, e.g. "Oliver"
-  avatar: string; // circle swatch image
+export interface ColorVariant {
+  id: string; // outfit-color id, also the asset folder name e.g. "luna"
+  name: string; // inspector "Character" swatch label, e.g. "Luna"
+  color: string; // CSS background for the colored circle swatch
 }
 
 export interface Character {
-  id: string; // "leo"
+  id: string; // "leo" — also the top-level asset folder for this character
   name: string; // sidebar + header label
   poses: Pose[];
-  avatars: AvatarVariant[];
+  /**
+   * Outfit-color swatches shown in the inspector "Character" section. Each
+   * variant maps to a recolored render folder at
+   * `public/characters/<id>/<colorId>/<poseId>.png`. List only the colors that
+   * actually have renders for this character (e.g. Noah ships oliver only).
+   */
+  colors?: ColorVariant[];
 }
 
 export type BackgroundId = "white" | "soft";
@@ -34,7 +38,7 @@ export interface ExportFormat {
 export interface SelectionState {
   characterId: string;
   poseId: string;
-  avatarId: string;
+  colorId: string; // active outfit color (only meaningful when the character has colors)
   backgroundId: BackgroundId;
   exportFormat: string;
   zoom: number; // percent, default 100

@@ -75,5 +75,4 @@ body {
 /* Sidebar footer accent (top border + outward glow) */
 .sidebar-footer-glow {
   border-top: 2px solid var(--color-accent-glow);
-  box-shadow: 3px -3px 20.2px 0px var(--color-accent-glow);
 }

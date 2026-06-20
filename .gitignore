@@ -43,3 +43,10 @@ next-env.d.ts
 # agent instructions
 AGENTS.md
 CLAUDE.md
+
+# claude code (local settings)
+.claude/settings.local.json
+
+# one-off Figma asset export/recolor tooling (not part of the app build)
+/dl_process.js
+/parse_map.js

@@ -23,10 +23,10 @@ export function SwatchCard({
       aria-pressed={selected}
       className={cn(
         "flex flex-1 flex-col items-center gap-2 rounded-[12px] border p-4",
-        "transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
+        "transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
         selected
-          ? "bg-brand-gradient-10 border-primary"
-          : "border-line bg-surface-50 hover:border-line-strong",
+          ? "bg-brand-gradient-10 border-primary hover:shadow-md"
+          : "border-line bg-surface-50 hover:-translate-y-0.5 hover:border-line-strong hover:bg-white hover:shadow-md",
       )}
     >
       {children}

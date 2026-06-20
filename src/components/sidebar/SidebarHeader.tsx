@@ -16,7 +16,7 @@ export function SidebarHeader() {
           Morphix - 3D
         </p>
         <p className="truncate text-xs text-muted-500">
-          Created by Muhammad Noman
+          @ Created by Muhammad Noman
         </p>
       </div>
     </div>

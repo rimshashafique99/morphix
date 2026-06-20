@@ -14,7 +14,7 @@ export function GradientButton({
     <button
       className={cn(
         "bg-brand-gradient inline-flex items-center justify-center gap-3 rounded-[12px] text-white",
-        "font-medium transition-[filter,transform] hover:brightness-105 active:scale-[0.99]",
+        "font-medium transition-all duration-200 hover:-translate-y-0.5 hover:brightness-105 hover:shadow-lg hover:shadow-primary/25 active:translate-y-0 active:scale-[0.99]",
         "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
         className,
       )}

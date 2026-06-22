@@ -78,14 +78,22 @@ export function Character3D({ src, alt, rotation, scale }: Character3DProps) {
       {/* Idle float loop */}
       <motion.div
         className="absolute inset-0"
-        style={{ transformStyle: "preserve-3d" }}
+        style={{
+          transformStyle: "preserve-3d",
+          willChange: "transform",
+          backfaceVisibility: "hidden",
+        }}
         animate={{ y: [0, -12, 0] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
       >
         {/* Drag rotation + zoom */}
         <motion.div
           className="relative flex size-full items-center justify-center"
-          style={{ transformStyle: "preserve-3d" }}
+          style={{
+            transformStyle: "preserve-3d",
+            willChange: "transform",
+            backfaceVisibility: "hidden",
+          }}
           animate={{ rotateX: rotation.x, rotateY: rotation.y, scale }}
           transition={{ type: "spring", stiffness: 120, damping: 20 }}
         >
@@ -112,13 +120,15 @@ export function Character3D({ src, alt, rotation, scale }: Character3DProps) {
             src={src}
             alt={alt}
             draggable={false}
-            initial={{ opacity: 0, scale: 0.94, rotateY: -10 }}
-            animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+            initial={{ opacity: 0, rotateY: -10 }}
+            animate={{ opacity: 1, rotateY: 0 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="absolute inset-0 size-full object-contain"
             style={{
               filter: "drop-shadow(0 30px 30px rgba(0,0,0,0.22))",
               z: 40,
+              willChange: "transform",
+              backfaceVisibility: "hidden",
             }}
           />
 

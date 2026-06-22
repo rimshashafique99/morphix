@@ -81,7 +81,6 @@ export const backgrounds: BackgroundOption[] = [
 export const exportFormats: ExportFormat[] = [
   { id: "png", label: "PNG", sublabel: "High quality" },
   { id: "transparent-png", label: "Transparent PNG", sublabel: "No background" },
-  { id: "svg", label: "SVG", sublabel: "Vector" },
 ];
 
 export const getCharacter = (id: string): Character =>

@@ -120,14 +120,18 @@ export function Character3D({ src, alt, rotation, scale }: Character3DProps) {
             src={src}
             alt={alt}
             draggable={false}
+            decoding="async"
             initial={{ opacity: 0, rotateY: -10 }}
             animate={{ opacity: 1, rotateY: 0 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="absolute inset-0 size-full object-contain"
             style={{
-              filter: "drop-shadow(0 30px 30px rgba(0,0,0,0.22))",
+              // No CSS filter / will-change here: keeping the <img> a
+              // "directly composited image" lets the GPU sample the full-res
+              // bitmap, so it stays crisp on first load and at every zoom level.
+              // Grounding shadow comes from the separate shadow copy + contact
+              // shadow layers below.
               z: 40,
-              willChange: "transform",
               backfaceVisibility: "hidden",
             }}
           />

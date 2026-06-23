@@ -9,7 +9,7 @@ interface SearchInputProps {
 
 export function SearchInput({ value, onChange }: SearchInputProps) {
   return (
-    <label className="flex h-[42px] w-full items-center gap-1 rounded-[8px] border border-input-border bg-white px-3 transition-colors duration-200 hover:border-muted-400 focus-within:border-primary">
+    <label className="flex h-[42px] w-full items-center gap-1 rounded-[8px] border border-input-border bg-white px-3 transition-colors duration-200 hover:border-primary focus-within:border-primary">
       <Search className="size-4 shrink-0 text-placeholder" aria-hidden />
       <span className="sr-only">Search Character</span>
       <input

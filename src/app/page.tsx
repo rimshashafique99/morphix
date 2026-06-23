@@ -64,16 +64,6 @@ export default function Home() {
     link.remove();
   };
 
-  const handleShare = async () => {
-    if (typeof navigator !== "undefined" && navigator.clipboard) {
-      try {
-        await navigator.clipboard.writeText(window.location.href);
-      } catch {
-        /* no-op: clipboard unavailable */
-      }
-    }
-  };
-
   return (
     <>
       <MobileGate />
@@ -93,7 +83,6 @@ export default function Home() {
         backgroundId={selection.backgroundId}
         zoom={selection.zoom}
         rotation={rotation}
-        onShare={handleShare}
         onRotate={setRotation}
         onWheelZoom={(deltaY) =>
           update({ zoom: clampZoom(selection.zoom - deltaY * 0.1) })

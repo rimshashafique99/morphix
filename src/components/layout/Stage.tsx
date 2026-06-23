@@ -12,7 +12,6 @@ interface StageProps {
   backgroundId: BackgroundId;
   zoom: number;
   rotation: { x: number; y: number };
-  onShare: () => void;
   onRotate: (rotation: { x: number; y: number }) => void;
   onWheelZoom: (deltaY: number) => void;
   onZoomIn: () => void;
@@ -28,7 +27,6 @@ export function Stage({
   backgroundId,
   zoom,
   rotation,
-  onShare,
   onRotate,
   onWheelZoom,
   onZoomIn,
@@ -37,7 +35,7 @@ export function Stage({
 }: StageProps) {
   return (
     <div className="flex min-w-px flex-1 flex-col gap-4">
-      <StageHeader title={title} subtitle={subtitle} onShare={onShare} />
+      <StageHeader title={title} subtitle={subtitle} />
       <CharacterViewer
         render={render}
         alt={alt}

@@ -26,7 +26,7 @@ export function ViewerControls({
             type="button"
             onClick={onZoomOut}
             aria-label="Zoom out"
-            className="text-muted-500 transition-all duration-200 hover:scale-125 hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            className="text-[#1A1A1A] transition-all duration-200 hover:scale-125 hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
           >
             <ZoomOut className="size-4" aria-hidden />
           </button>
@@ -37,7 +37,7 @@ export function ViewerControls({
             type="button"
             onClick={onZoomIn}
             aria-label="Zoom in"
-            className="text-muted-500 transition-all duration-200 hover:scale-125 hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            className="text-[#1A1A1A] transition-all duration-200 hover:scale-125 hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
           >
             <ZoomIn className="size-4" aria-hidden />
           </button>
@@ -47,14 +47,14 @@ export function ViewerControls({
             type="button"
             onClick={onReset}
             aria-label="Reset view"
-            className="flex size-6 items-center justify-center text-muted-500 transition-all duration-200 hover:scale-125 hover:-rotate-45 hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            className="flex size-6 items-center justify-center text-[#1A1A1A] transition-all duration-200 hover:scale-125 hover:-rotate-45 hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
           >
             <RotateCcw className="size-4" aria-hidden />
           </button>
         </div>
       </div>
-      <p className="text-center text-xs text-muted-400">
-        Drag to rotate · Scroll to zoom
+      <p className="text-center text-xs text-muted-500">
+        Drag to rotate - Scroll to zoom
       </p>
     </div>
   );

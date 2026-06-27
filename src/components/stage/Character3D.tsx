@@ -12,8 +12,8 @@ interface Character3DProps {
 }
 
 /** Base on-screen size of the character box at 100% zoom. */
-const BASE_W = 420;
-const BASE_H = 600;
+const BASE_W = 378;
+const BASE_H = 540;
 /**
  * The character is rasterized into a texture this many times larger than its
  * 100% on-screen size, then the zoom transform only ever scales that texture
@@ -53,7 +53,7 @@ export function Character3D({ src, alt, rotation, scale }: Character3DProps) {
   return (
     <div
       className="relative max-h-full max-w-full"
-      style={{ width: 420, height: 600, perspective: 1600 }}
+      style={{ width: BASE_W, height: BASE_H, perspective: 1600 }}
     >
       {/* 3D ground glow plane */}
       <div
@@ -122,7 +122,7 @@ export function Character3D({ src, alt, rotation, scale }: Character3DProps) {
             rotating.
           */}
           <motion.div
-            className="relative"
+            className="relative shrink-0"
             style={{
               width: BOX_W,
               height: BOX_H,
